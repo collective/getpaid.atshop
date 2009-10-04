@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="getpaid.atshop">
+
+<metal:javascript fill-slot="javascript_head_slot">
+	<script type="text/javascript" charset="utf-8">
+		jq(document).ready(function() {
+			atshop.setupProductImagePreviews();
+		});
+	</script>
+</metal:javascript>
+
+<body>
+    <div metal:fill-slot="main">
+        <tal:main-macro metal:define-macro="main">
+
+			<div class="product-data">
+
+
+				<h1 class="documentFirstHeading">
+					<span class="name" tal:content="context/Title" />
+					[<span class="price" tal:content="view/price" />]
+				</h1>
+
+				<p class="documentDescription" tal:content="context/Description" />
+
+				<div class="body-text">
+				 	<tal:inject tal:replace="structure context/text" />
+				</div>
+
+				<tal:extra condition="view/extra">
+					<div tal:replace="structure view/extra" />
+				</tal:extra>
+
+			</div>
+
+			<div tal:replace="structure view/image_browser" />
+
+			<div class="visualClear"><!-- --></div>
+
+		</tal:main-macro>
+    </div>
+</body>
+</html>
